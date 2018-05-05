@@ -27,7 +27,7 @@ class ClockApp(App):
         layout = BoxLayout(orientation='vertical')
 
         self.minutesbar = ProgressBar(value=60 * int(self.minutes) + int(self.seconds), max=3600)
-        self.clocktext = Label(text=convert(self.hours, self.minutes, self.seconds), font_size='52sp')13
+        self.clocktext = Label(text=convert(self.hours, self.minutes, self.seconds), font_size='52sp')
         self.secsbar = ProgressBar(value=1000 * int(self.seconds) + self.millis, max=60000)
         self.buttonbar = BoxLayout(orientation='horizontal')
         self.ny = Button(text='New York', font_size='14sp')
