@@ -6,8 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.progressbar import ProgressBar
-from times import millis, sec, min,hour, convert
-from times import dddd
+from times import millis, sec, min, hour, convert, timezone
 from kivy.clock import Clock
 import threading
 
@@ -31,6 +30,7 @@ class ClockApp(App):
         self.secsbar = ProgressBar(value=1000 * int(self.seconds) + self.millis, max=60000)
         self.buttonbar = BoxLayout(orientation='horizontal')
         self.ny = Button(text='New York', font_size='14sp')
+        self.ny.bind(on_release=self.time_NY)
         self.be = Button(text='Belgium', font_size='14sp')
         self.buttonbar.add_widget(self.ny)
         self.buttonbar.add_widget(self.be)
@@ -44,6 +44,7 @@ class ClockApp(App):
 
     def update(self):
         while True:
+
             self.millis = millis()
             self.secsbar.value = 1000 * int(self.seconds) + self.millis
             if self.seconds is not sec():
@@ -60,13 +61,27 @@ class ClockApp(App):
         t = threading.Thread(target=self.update)
         t.start()
 
+    def time_NY(self, instance):
+
+        return
 
 
 
 
+
+    #def timezone(self, instance):
+    #    res = int(self.hours) - 6
+        
+        #self.clocktext.text = convert(str(res), self.minutes, self.seconds)
+
+
+
+
+        #return res
 
 
 
 if __name__ == '__main__':
     ClockApp().run()
+
 

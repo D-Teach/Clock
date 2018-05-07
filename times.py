@@ -1,29 +1,24 @@
 import time
 
-from datetime import datetime, timedelta
-from pytz import timezone
-import pytz
-
-
-
-
-def dddd(zone='Indian/Mahe'):
-    other_zone = timezone(zone)
-    ddd = datetime.now(other_zone)
-    return ddd.strftime('%T')
-
 
 def millis():
     return int(round(time.time() * 1000 % 1000))
 
+
 def sec():
     return str(time.localtime().tm_sec)
+
 
 def min():
     return str(time.localtime().tm_min)
 
+#Belgium timezone (localtime witout changes)
+timezone = 0
+#New York timezone without my localtime
+#timezone = 6
 def hour():
-    return str(time.localtime().tm_hour)
+    return str(time.localtime().tm_hour - timezone)
+
 
 def convert(h, m, s):
     res = ""
@@ -44,3 +39,4 @@ def convert(h, m, s):
 
     return res
 
+print(hour())
